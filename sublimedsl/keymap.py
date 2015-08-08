@@ -62,8 +62,6 @@ from funcy import flatten, lflatten, map, pluck_attr, select_values
 
 __all__ = ['Context', 'Binding', 'Keymap', 'bind', 'context']
 
-FILE_SUFFIX = '.sublime-keymap'
-
 FILE_HEADER = '''\
 // This file is generated, do not edit it by hand!
 '''
@@ -95,18 +93,17 @@ class Keymap():
         """
         return jsonify(self._bindings, **kwargs)
 
-    def dump(self, filename, **kwargs):
-        """ Serialize this keymap as a JSON to the file.
+    def dump(self, fp=sys.stdout, **kwargs):
+        """ Serialize this keymap as a JSON formatted stream to the *fp*.
 
         Arguments:
-            filename (str): Name of the file to dump the generated JSON into.
+            fp: A ``.write()``-supporting file-like object to write the
+                generated JSON to (default is ``sys.stdout``).
             **kwargs: Options to be passed into :func:`json.dumps`.
         """
-        if not filename.lower().endswith(FILE_SUFFIX):
-            filename += FILE_SUFFIX
-        with open(filename, 'w') as f:
-            f.write(FILE_HEADER)
-            f.writelines(self.to_json(**kwargs))
+        fp.write(FILE_HEADER)
+        fp.write(self.to_json(**kwargs))
+        fp.write('\n')
 
     def extend(self, *bindings):
         """ Append the given bindings to this keymap.
