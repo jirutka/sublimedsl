@@ -2,6 +2,7 @@ SublimeText DSL
 ===============
 [![version](https://badge.fury.io/py/sublimedsl.svg)](https://pypi.python.org/pypi/sublimedsl)
 [![downloads](https://pypip.in/d/sublimedsl/badge.svg)](https://pypi.python.org/pypi/sublimedsl)
+[![documentation](https://readthedocs.org/projects/sublimedsl/badge/?version=latest)](http://sublimedsl.readthedocs.org/en/latest/)
 
 TODO
 
