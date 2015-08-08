@@ -56,17 +56,13 @@ import json
 import sys
 from collections import OrderedDict
 from copy import deepcopy
-from funcy import autocurry, isa, notnone, partial
+from funcy import isa, notnone, partial
 from funcy import rcompose as pipe
 from funcy import flatten, lflatten, map, pluck_attr, select_values
 
 __all__ = ['Context', 'Binding', 'Keymap', 'bind', 'context']
 
 FILE_SUFFIX = '.sublime-keymap'
-
-# Make these function autocurrying.
-for f in (flatten, select_values):
-    setattr(sys.modules[__name__], f.__name__, autocurry(f))
 
 
 class Keymap():
@@ -322,7 +318,7 @@ class KeymapJSONEncoder(json.JSONEncoder):
     def default(self, obj):
         ordered_attrs = pipe(
             partial(map, lambda attr: (attr, getattr(obj, attr))),
-            select_values(notnone),
+            partial(select_values, notnone),
             OrderedDict)
 
         if isinstance(obj, Context):
