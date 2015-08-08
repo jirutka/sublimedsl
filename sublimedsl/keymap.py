@@ -64,6 +64,11 @@ __all__ = ['Context', 'Binding', 'Keymap', 'bind', 'context']
 
 FILE_SUFFIX = '.sublime-keymap'
 
+FILE_HEADER = '''\
+// This file is generated, do not edit it by hand!
+// -*- mode: JSON -*-
+'''
+
 
 class Keymap():
 
@@ -101,6 +106,7 @@ class Keymap():
         if not filename.lower().endswith(FILE_SUFFIX):
             filename += FILE_SUFFIX
         with open(filename, 'w') as f:
+            f.write(FILE_HEADER)
             f.writelines(self.to_json(**kwargs))
 
     def extend(self, *bindings):
