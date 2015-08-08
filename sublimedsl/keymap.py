@@ -66,7 +66,6 @@ FILE_SUFFIX = '.sublime-keymap'
 
 FILE_HEADER = '''\
 // This file is generated, do not edit it by hand!
-// -*- mode: JSON -*-
 '''
 
 
