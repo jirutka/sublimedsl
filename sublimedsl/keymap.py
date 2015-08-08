@@ -25,7 +25,7 @@ Example:
     ).dump('Default')  # nopep8
 
 
-This above code will produce file ``Default.sublime-keymap`` with:
+The above code will produce file ``Default.sublime-keymap`` with:
 
 ..  code-block:: json
 

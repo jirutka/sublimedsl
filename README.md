@@ -34,7 +34,7 @@ Keymap(
 ).dump('Default')
 ```
 
-This above code will produce file `Default.sublime-keymap` with:
+The above code will produce file `Default.sublime-keymap` with:
 
 ```json
 [
