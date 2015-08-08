@@ -89,7 +89,7 @@ class Keymap():
         Returns:
             str: A JSON representing this keymap.
         """
-        return jsonify(self._postprocess(self._bindings), **kwargs)
+        return jsonify(self._bindings, **kwargs)
 
     def dump(self, filename, **kwargs):
         """ Serialize this keymap as a JSON to the file.
@@ -112,24 +112,22 @@ class Keymap():
         self._bindings.extend(self._preprocess(bindings))
 
     def _preprocess(self, bindings):
-        return lflatten(deepcopy(bindings), follow=isa(list, tuple, Keymap))
-
-    def _postprocess(self, bindings):
         return pipe(
             deepcopy,
+            partial(lflatten, follow=isa(list, tuple, Keymap)),
             self._apply_common_context,
             self._apply_default_match_all
         )(bindings)
+
+    def _apply_common_context(self, bindings):
+        for binding in bindings:
+            binding.context.extend(self._common_context)
+        return bindings
 
     def _apply_default_match_all(self, bindings):
         for context in flatten(pluck_attr('context', bindings)):
             if context.match_all is None:
                 context.match_all = self._default_match_all
-        return bindings
-
-    def _apply_common_context(self, bindings):
-        for binding in bindings:
-            binding.context.extend(self._common_context)
         return bindings
 
     def __iter__(self):
