@@ -1,5 +1,6 @@
 SublimeText DSL
 ===============
+[![Build Status](https://img.shields.io/travis/jirutka/sublimedsl/master.svg?style=flat)](https://travis-ci.org/jirutka/sublimedsl)
 [![version](https://img.shields.io/pypi/v/sublimedsl.svg?style=flat)](https://pypi.python.org/pypi/sublimedsl)
 [![downloads](https://img.shields.io/pypi/dm/sublimedsl.svg?style=flat)](https://pypi.python.org/pypi/sublimedsl)
 [![documentation](https://readthedocs.org/projects/sublimedsl/badge/?version=latest)](http://sublimedsl.readthedocs.org/en/latest/)

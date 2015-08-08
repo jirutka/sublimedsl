@@ -1,0 +1,9 @@
+language: python
+sudo: false
+python: 3.3
+install:
+  - pip install -r requirements.txt
+  - ./setup.py install
+script:
+  - py.test -vv
+  - pep8
