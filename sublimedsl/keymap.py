@@ -245,8 +245,6 @@ class Context():
         not_regex_contains(pattern)
             Specify that the context's value must *not* contain the pattern
             (partial match).
-
-    .. _Structure of a Context: |key_bindings|
     """
 
     _OPERATORS = [
