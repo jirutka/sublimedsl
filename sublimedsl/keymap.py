@@ -56,7 +56,7 @@ import json
 import sys
 from collections import OrderedDict
 from copy import deepcopy
-from funcy import isa, notnone, partial
+from funcy import all_fn, any_fn, complement, isa, isnone, partial
 from funcy import rcompose as pipe
 from funcy import flatten, lflatten, map, pluck_attr, select_values
 
@@ -316,7 +316,8 @@ class KeymapJSONEncoder(json.JSONEncoder):
     def default(self, obj):
         ordered_attrs = pipe(
             partial(map, lambda attr: (attr, getattr(obj, attr))),
-            partial(select_values, notnone),
+            partial(remove_values, isnone),
+            partial(remove_values, all_fn(isa(list, dict), isempty)),
             OrderedDict)
 
         if isinstance(obj, Context):
@@ -325,6 +326,14 @@ class KeymapJSONEncoder(json.JSONEncoder):
             return ordered_attrs(['keys', 'command', 'args', 'context'])
         else:
             return super().default(obj)
+
+
+def isempty(obj):
+    return len(obj) == 0
+
+
+def remove_values(pred, col):
+    return select_values(complement(pred), col)
 
 
 def jsonify(self, indent=2, **kwargs):
