@@ -1,5 +1,4 @@
 pep8
-pypandoc
 pytest
 sphinx
 sphinx_rtd_theme
