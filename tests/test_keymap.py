@@ -42,7 +42,7 @@ def test_integration():
           { "key": "selector", "operator": "equal", "operand": "text.asciidoc", "match_all": true }
         ]
       }
-    ]'''
+    ]'''  # nopep8
 
     assert normalize_json(actual) == normalize_json(expected)
 
