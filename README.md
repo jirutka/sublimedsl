@@ -31,10 +31,10 @@ Keymap(
     ],
     default_match_all=True
 
-).dump('Default')
+).dump()
 ```
 
-The above code will produce file `Default.sublime-keymap` with:
+The above code generates:
 
 ```json
 [

@@ -22,10 +22,10 @@ Example:
         ],
         default_match_all=True
 
-    ).dump('Default')  # nopep8
+    ).dump()  # nopep8
 
 
-The above code will produce file ``Default.sublime-keymap`` with:
+The above code generates:
 
 ..  code-block:: json
 
