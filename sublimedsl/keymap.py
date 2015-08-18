@@ -58,7 +58,7 @@ from collections import OrderedDict
 from copy import deepcopy
 from funcy import all_fn, any_fn, complement, iffy, isa, isnone, partial
 from funcy import rcompose as pipe
-from funcy import first, flatten, lflatten, map, pluck_attr, select_values, walk_values
+from funcy import first, flatten, lflatten, map, pluck_attr, select_keys, select_values, walk_values
 
 __all__ = ['Context', 'Binding', 'Keymap', 'bind', 'context']
 
@@ -197,6 +197,11 @@ class Binding():
     def __str__(self):
         return jsonify(self)
 
+    def __eq__(self, other):
+        if isinstance(other, type(self)):
+            return public_attrs(self) == public_attrs(other)
+        return NotImplemented
+
 # alias
 bind = Binding
 
@@ -309,6 +314,11 @@ class Context():
     def __str__(self):
         return jsonify(self, indent=None)
 
+    def __eq__(self, other):
+        if isinstance(other, type(self)):
+            return public_attrs(self) == public_attrs(other)
+        return NotImplemented
+
 # alias
 context = Context
 
@@ -333,6 +343,18 @@ class KeymapJSONEncoder(json.JSONEncoder):
 
 def isempty(obj):
     return len(obj) == 0
+
+
+def public_attrs(obj):
+    """ Return "public" attributes of the object.
+
+    This function omits object's methods and attributes which name starts with
+    an underscore.
+
+    Returns:
+        dict: Mapping of attributes to their values.
+    """
+    return select_keys(lambda k: not k.startswith('_'), obj.__dict__)
 
 
 def remove_values(pred, col):
