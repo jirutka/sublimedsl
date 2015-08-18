@@ -260,11 +260,6 @@ class Context():
         self.match_all = None
         self._parent = parent
 
-        for op in self._OPERATORS:
-            func = partial(self._operator, op)
-            func.__name__ = op
-            setattr(self.__class__, op, func)
-
     def all(self):
         """ Require the test to succeed for all selections.
 
@@ -305,6 +300,11 @@ class Context():
         self.operator = operator
         self.operand = operand
         return self._parent or self
+
+    def __getattr__(self, name):
+        if name in self._OPERATORS:
+            return partial(self._operator, name)
+        raise AttributeError
 
     def __str__(self):
         return jsonify(self, indent=None)
