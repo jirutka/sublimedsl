@@ -142,7 +142,7 @@ class Keymap():
         return len(self._bindings)
 
     def __str__(self):
-        return self.jsonify()
+        return self.to_json()
 
 
 class Binding():
