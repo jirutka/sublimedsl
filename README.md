@@ -1,6 +1,6 @@
 SublimeText DSL
 ===============
-[![Build Status](https://img.shields.io/travis/jirutka/sublimedsl/master.svg?style=flat)](https://travis-ci.org/jirutka/sublimedsl)
+[![Build Status](https://api.travis-ci.org/jirutka/sublimedsl.svg?branch=master)](https://travis-ci.org/jirutka/sublimedsl)
 [![Coverage Status](https://coveralls.io/repos/jirutka/sublimedsl/badge.svg?branch=master&service=github)](https://coveralls.io/github/jirutka/sublimedsl?branch=master)
 [![Code Climate](https://codeclimate.com/github/jirutka/sublimedsl/badges/gpa.svg)](https://codeclimate.com/github/jirutka/sublimedsl)
 [![version](https://img.shields.io/pypi/v/sublimedsl.svg?style=flat)](https://pypi.python.org/pypi/sublimedsl)
