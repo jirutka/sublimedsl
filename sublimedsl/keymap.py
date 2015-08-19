@@ -368,5 +368,5 @@ def sort_dict(dic, key=lambda t: first(t)):
     return OrderedDict(sorted(dic.items(), key=key))
 
 
-def jsonify(self, indent=2, **kwargs):
-    return json.dumps(self, cls=KeymapJSONEncoder, indent=indent, **kwargs)
+def jsonify(obj, indent=2, **kwargs):
+    return json.dumps(obj, cls=KeymapJSONEncoder, indent=indent, separators=(',', ': '), **kwargs)
