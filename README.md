@@ -1,5 +1,5 @@
-SublimeText DSL
-===============
+SublimeDSL
+==========
 [![Build Status](https://api.travis-ci.org/jirutka/sublimedsl.svg?branch=master)](https://travis-ci.org/jirutka/sublimedsl)
 [![Coverage Status](https://coveralls.io/repos/jirutka/sublimedsl/badge.svg?branch=master&service=github)](https://coveralls.io/github/jirutka/sublimedsl?branch=master)
 [![Code Climate](https://codeclimate.com/github/jirutka/sublimedsl/badges/gpa.svg)](https://codeclimate.com/github/jirutka/sublimedsl)
@@ -7,7 +7,14 @@ SublimeText DSL
 [![downloads](https://img.shields.io/pypi/dm/sublimedsl.svg?style=flat)](https://pypi.python.org/pypi/sublimedsl)
 [![documentation](https://readthedocs.org/projects/sublimedsl/badge/?version=latest)](http://sublimedsl.readthedocs.org/en/latest/)
 
-TODO
+The configuration of Sublime Text uses verbose JSON files, XML files, and also horrible PList/XML files (TextMate legacy).
+When used in plugins, some of them (e.g. keymaps) may contain even hundreds of lines with huge ratio of duplications.
+Sooner or later, it’ll become quite hard to maintain such a mess.
+
+The aim of this module is to provide simple pythonic DSL for generating particular configuration files.
+Currently only [Key Bindings](http://docs.sublimetext.info/en/latest/reference/key_bindings.html) are supported, but other configs may come later.
+
+You’re more than welcome to add DSL for other Sublime Text’s configs!
 
 
 ## Usage
@@ -61,6 +68,8 @@ The above code generates:
   }
 ]
 ```
+
+You can also look at real-world example in the [Asciidoctor plugin](https://github.com/asciidoctor/sublimetext-asciidoc/): [Keymap DSL](https://github.com/asciidoctor/sublimetext-asciidoc/blob/master/Keymaps/Default.sublime-keymap.py) and [generated JSON](https://github.com/asciidoctor/sublimetext-asciidoc/blob/master/Keymaps/Default.sublime-keymap).
 
 
 ## Installation
