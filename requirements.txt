@@ -1,5 +1,7 @@
+coveralls
 pep8
 pytest
+pytest-cov
 pytest-describe
 pytest-mock
 sphinx

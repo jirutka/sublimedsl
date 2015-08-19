@@ -11,3 +11,6 @@ dist/
 
 # Generated docs
 docs/_build/
+
+# Coverage report
+.coverage
