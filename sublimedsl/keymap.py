@@ -165,7 +165,7 @@ class Binding():
         """
         self.keys = keys
         self.command = None
-        self.args = []
+        self.args = {}
         self.context = []
 
     def to(self, command, **args):
