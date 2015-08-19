@@ -1,5 +1,7 @@
 pep8
 pytest
+pytest-describe
+pytest-mock
 sphinx
 sphinx_rtd_theme
 sphinxcontrib-napoleon
