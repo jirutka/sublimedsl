@@ -1,0 +1,8 @@
+languages:
+  Python: true
+exclude_paths:
+  - build/**/*
+  - dist/**/*
+  - docs/**/*
+  - tests/**/*
+  - setup.py
