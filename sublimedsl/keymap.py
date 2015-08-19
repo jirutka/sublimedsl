@@ -110,8 +110,11 @@ class Keymap():
 
         Arguments:
             *bindings (Binding): Bindings to be added.
+        Returns:
+            Keymap: self
         """
         self._bindings.extend(self._preprocess(bindings))
+        return self
 
     def _preprocess(self, bindings):
         return pipe(
