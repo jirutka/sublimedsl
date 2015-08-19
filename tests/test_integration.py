@@ -1,11 +1,8 @@
 import json
 from sublimedsl.keymap import *
 
-# TODO: write proper unit tests!
 
-
-# Very provisional test that should be replaced ASAP.
-def test_integration():
+def test_keymap():
     actual = Keymap(
         bind('backspace')
             .to('run_macro_file', file='res://Packages/Default/Delete Left Right.sublime-macro')
